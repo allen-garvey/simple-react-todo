@@ -39,5 +39,5 @@ li{
   cursor: pointer;
 }
 .completed-item{
-  text-decoration: line-though;
+  text-decoration: line-through;
 }
