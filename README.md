@@ -4,8 +4,8 @@ Simple TODO list project. This project was bootstrapped with [Create React App](
 
 ## Dependencies
 
-* 
-* 
+* node >= 8.14
+* npm
 
 ## Getting Started
 
