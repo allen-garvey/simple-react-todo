@@ -8,6 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    this.input = null;
     this.state = {
       initializationComplete: false,
       todos: [],
@@ -33,6 +34,7 @@ class App extends Component {
         todos: this.state.todos.concat([new Todo(this.state.newTodoTitle)]),
         newTodoTitle: '',
       });
+      this.input.focus();
     }
   }
 
@@ -85,7 +87,7 @@ class App extends Component {
         <main>
           <div className="add-todo-container">
             <form onSubmit={(e)=>{e.preventDefault();this.addTodo();}}>
-              <input type="text" placeholder="Add todo" value={this.state.newTodoTitle} onChange={(e)=>{this.setState({newTodoTitle: e.target.value});}} /> 
+              <input type="text" placeholder="Add todo" ref={input => this.input = input} value={this.state.newTodoTitle} onChange={(e)=>{this.setState({newTodoTitle: e.target.value});}} /> 
               <button className="add-button" onClick={()=>{this.addTodo();}}>Add</button>
             </form>
           </div>
