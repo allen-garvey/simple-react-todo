@@ -36,14 +36,54 @@ class App extends Component {
     }
   }
 
+  deleteTodo(index, isCompleted=false){
+    const key = isCompleted ? 'completedTodos' : 'todos';
+    //can't create object literal if key is a variable
+    const updateObject = {};
+    updateObject[key] = this.state[key].filter((_todo, filterIndex)=>{ return index !== filterIndex; });
+
+    this.setState(updateObject);
+  }
+
+  completeTodo(index){
+    const completedTodo = this.state.todos[index];
+
+    this.setState({
+      completedTodos: this.state.completedTodos.concat([completedTodo]),
+    });
+    this.deleteTodo(index);
+  }
+
+  completedTodos(){
+    return (
+      <div>
+        <h2>Completed</h2>
+        <ol className="completed-list">
+        {this.state.completedTodos.map((todo, index) => {     
+            return (
+              <li key={index+1+this.state.todos.length}>
+                <span className="completed-item">{index}) {todo.title}</span>
+                <span className="list-button-spacer"></span>
+                <span className="list-button" onClick={() => {this.deleteTodo(index, true);}}>×</span>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    );
+  }
+
   render() {
+    const completedTodoMarkup = this.state.completedTodos.length > 0 ? this.completedTodos() : '';
+
+
     return (
       <div className="container">
         <header>
           <h1>To-Do List</h1>
         </header>
         <main>
-          <div>
+          <div className="add-todo-container">
             <input type="text" placeholder="Add todo" value={this.state.newTodoTitle} onChange={(e)=>{this.setState({newTodoTitle: e.target.value});}} /> 
             <button className="add-button" onClick={()=>{this.addTodo();}}>Add</button>
           </div>
@@ -52,24 +92,15 @@ class App extends Component {
               {this.state.todos.map((todo, index) => {     
                   return (
                     <li key={index}>
-                      {index}) {todo.title}
+                      <span>{index+1}) {todo.title}</span>
+                      <span className="list-button" onClick={() => {this.completeTodo(index);}}>✓</span>
+                      <span className="list-button" onClick={() => {this.deleteTodo(index);}}>×</span>
                     </li>
                   );
                 })}
             </ol>
           </div>
-          <div>
-            <h2>Completed</h2>
-            <ol className="completed-list">
-            {this.state.completedTodos.map((todo, index) => {     
-                return (
-                  <li key={index}>
-                    {index}) {todo.title}
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
+          {completedTodoMarkup}
         </main>
       </div>
     );
