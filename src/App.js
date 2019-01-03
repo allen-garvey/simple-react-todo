@@ -94,7 +94,7 @@ class App extends Component {
               {this.state.todos.map((todo, index) => {     
                   return (
                     <li key={index}>
-                      <span class="todo-text">{index+1}) {todo.title}</span>
+                      <span className="todo-text">{index+1}) {todo.title}</span>
                       <span className="list-button" onClick={() => {this.completeTodo(index);}}>✓</span>
                       <span className="list-button" onClick={() => {this.deleteTodo(index);}}>×</span>
                     </li>
