@@ -84,8 +84,10 @@ class App extends Component {
         </header>
         <main>
           <div className="add-todo-container">
-            <input type="text" placeholder="Add todo" value={this.state.newTodoTitle} onChange={(e)=>{this.setState({newTodoTitle: e.target.value});}} /> 
-            <button className="add-button" onClick={()=>{this.addTodo();}}>Add</button>
+            <form onSubmit={(e)=>{e.preventDefault();this.addTodo();}}>
+              <input type="text" placeholder="Add todo" value={this.state.newTodoTitle} onChange={(e)=>{this.setState({newTodoTitle: e.target.value});}} /> 
+              <button className="add-button" onClick={()=>{this.addTodo();}}>Add</button>
+            </form>
           </div>
           <div>
             <ol className="completed-list">
