@@ -77,7 +77,7 @@ class App extends Component {
 
   render() {
     const completedTodoMarkup = this.state.completedTodos.length > 0 ? this.completedTodos() : '';
-
+    const addButtonDisabled = this.state.newTodoTitle ? false : true;
 
     return (
       <div className="container">
@@ -88,7 +88,7 @@ class App extends Component {
           <div className="add-todo-container">
             <form onSubmit={(e)=>{e.preventDefault();this.addTodo();}}>
               <input type="text" placeholder="Add todo" ref={input => this.input = input} value={this.state.newTodoTitle} onChange={(e)=>{this.setState({newTodoTitle: e.target.value});}} /> 
-              <button className="add-button" onClick={()=>{this.addTodo();}}>Add</button>
+              <button className="add-button" onClick={()=>{this.addTodo();}} disabled={addButtonDisabled}>Add</button>
             </form>
           </div>
           <div>
