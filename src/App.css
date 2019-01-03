@@ -46,4 +46,5 @@ li{
 .todo-text{
   display: inline-block;
   min-width: 16em;
+  max-width: 16em;
 }
