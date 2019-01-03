@@ -32,6 +32,7 @@ li{
 }
 
 .list-button, .list-button-spacer{
+  display: inline-block;
   margin-left: 1em;
   min-width: 2em;
 }
@@ -40,4 +41,9 @@ li{
 }
 .completed-item{
   text-decoration: line-through;
+}
+
+.todo-text{
+  display: inline-block;
+  min-width: 16em;
 }

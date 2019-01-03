@@ -62,7 +62,7 @@ class App extends Component {
         {this.state.completedTodos.map((todo, index) => {     
             return (
               <li key={index+1+this.state.todos.length}>
-                <span className="completed-item">{index}) {todo.title}</span>
+                <span className="todo-text completed-item">{index+1+this.state.todos.length}) {todo.title}</span>
                 <span className="list-button-spacer"></span>
                 <span className="list-button" onClick={() => {this.deleteTodo(index, true);}}>×</span>
               </li>
@@ -92,7 +92,7 @@ class App extends Component {
               {this.state.todos.map((todo, index) => {     
                   return (
                     <li key={index}>
-                      <span>{index+1}) {todo.title}</span>
+                      <span class="todo-text">{index+1}) {todo.title}</span>
                       <span className="list-button" onClick={() => {this.completeTodo(index);}}>✓</span>
                       <span className="list-button" onClick={() => {this.deleteTodo(index);}}>×</span>
                     </li>
