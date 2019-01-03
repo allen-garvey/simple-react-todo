@@ -92,7 +92,7 @@ class App extends Component {
             </form>
           </div>
           <div>
-            <ol className="completed-list">
+            <ol>
               {this.state.todos.map((todo, index) => {     
                   return (
                     <li key={index}>
